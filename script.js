@@ -14,6 +14,12 @@ const getMethods = (obj) => {
   }
 
 window.addEventListener('load', () => {
+    let loadingPopup = Swal.fire({
+        title: 'Loading...',
+        showCancelButton: false
+    })
+    Swal.showLoading()
+
     L.Icon.Default.imagePath = 'images/';
     // Creating map options
     var mapOptions = {
@@ -50,6 +56,8 @@ window.addEventListener('load', () => {
             </td>
       </tr>`
         })
+    }).then(() => {
+      Swal.close()
     })
     window.map = map
     console.log(getMethods(window.map));
